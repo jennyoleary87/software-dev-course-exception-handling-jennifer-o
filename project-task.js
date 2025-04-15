@@ -1,4 +1,6 @@
 /*
+04/15/25
+
 ===========================================
 🐾 Debugging & Exception Handling Activity
 ===========================================
@@ -123,3 +125,6 @@ while (true) {
 🔹 Structured Exception Handling:
 - Add `try/catch` blocks to catch these errors and allow the app to continue running.
 */
+
+// npm install prompt-sync
+// require("prompt-sync")({sigint: true});
