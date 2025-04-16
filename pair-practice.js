@@ -38,31 +38,44 @@ function calculateProduct(a, b) {
 */
 
 function calculateProduct(a, b) {
-    return a * b;
+    if (!isNaN(a) && !isNaN(b)) {
+        return a * b;
+    } else {
+        throw new Error("Please Pass a Valid Number");
+    }
 }
 
-/* example 3 ORIGINAL
-function calculateProduct(a, b) {
-    return a * b;
-}
-*/
-
-function calculateProduct(a, b) {
-    return a * b;
+try {
+    console.log(calculateProduct("a", "b"));
+} catch (err) {
+    console.log(err.message);
 }
 
 /* example 4 ORIGINAL
 const incompleteTasks = todos.filter((todo) => !todo.completed);
 */
 
-const incompleteTasks = todos.filter((todo) => !todo.completed);
+const todos = [
+    { task: "Wash the dishes", completed: null, priority: 3 },
+    { task: "Write a blog post", completed: true, priority: 1 },
+    { task: "Buy groceries", completed: false, priority: 2 },
+    { task: "Study JavaScript", completed: true, priority: 1 },
+    { task: "Walk the dog", completed: false, priority: 2 },
+];
 
 try {
-    incompleteTasks(["Katy", "Doug", "Bill"]); // no error
-    incompleteTasks([]); // Empty array throws catch error message to user
-}
-catch (error) {
-    console.error(error.message)
+    const incompleteTasks = todos.filter(function (todo) {
+        if (todo.completed !== undefined && todo.completed !== null) {
+            todo.completed = false;
+            return true; // tells filter to return todo in the filtered list
+        } else {
+            throw new Error("Please pass defined objects");
+        }
+    });
+
+    console.log('Incomplete tasks:', incompleteTasks);
+} catch (err) {
+    console.log(err.message);
 }
 
 /* example 5 ORIGINAL
@@ -70,5 +83,19 @@ const sortedByPriority = todos.sort((a, b) => a.priority -
     b.priority);
 */
 
-const sortedByPriority = todos.sort((a, b) => a.priority -
-    b.priority);
+try {
+
+    const sortedByPriority = todos.sort((a, b) => {
+        if (a.priority === undefined || a.priority === null) {
+            throw new Error('Todo item is missing a valid "priority" value.');
+        }
+        if (b.priority === undefined || b.priority === null) {
+            throw new Error('Todo item is missing a valid "priority" value.');
+        }
+
+        return a.priority - b.priority;
+    });
+} catch (err) {
+
+    console.log(err.message);
+} 
