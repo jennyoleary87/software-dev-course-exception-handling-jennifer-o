@@ -126,6 +126,7 @@ while (true) {
 - Add `try/catch` blocks to catch these errors and allow the app to continue running.
 */
 
+// ===== NOTES =====
 // current output: Unexpected error: prompt is not defined
 // npm install prompt-sync
 // require("prompt-sync")({sigint: true});
